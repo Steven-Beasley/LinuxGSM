@@ -9,6 +9,7 @@ armar,libcurl4
 ats
 av
 bb
+pw
 bb2,libcurl4-gnutls-dev:i386
 bd
 bf1942,libncurses5:i386,libtinfo5:i386
@@ -19,7 +20,6 @@ bs
 bt,libicu-dev,dos2unix,libxml2-utils
 btl
 cc
-cd
 ck,xvfb,libxi6
 cmw
 cod,libstdc++5:i386
@@ -89,6 +89,7 @@ pvr,libc++1
 pz,openjdk-8-jre,rng-tools
 q2
 q3
+q4
 ql
 qw
 ricochet

@@ -204,11 +204,11 @@ fn_install_missing_deps() {
 		# If automatic dependency install is unavailable.
 		if [ "${autodepinstall}" != "0" ]; then
 			if [ "$(command -v apt 2> /dev/null)" ]; then
-				echo -e "${i386installcommand}sudo apt update; sudo apt install ${array_deps_missing[*]}"
+				echo -e " Run: '${green}${i386installcommand}sudo apt update; sudo apt install ${array_deps_missing[*]}${default}' as root to install missing dependencies."
 			elif [ "$(command -v dnf 2> /dev/null)" ]; then
-				echo -e "sudo dnf install ${array_deps_missing[*]}"
+				echo -e " Run: '${green}sudo dnf install ${array_deps_missing[*]}${default}' as root to install missing dependencies."
 			elif [ "$(command -v yum 2> /dev/null)" ]; then
-				echo -e "sudo yum install ${array_deps_missing[*]}"
+				echo -e " Run: '${green}sudo yum install ${array_deps_missing[*]}${default}' as root to install missing dependencies."
 			fi
 		fi
 
@@ -252,7 +252,7 @@ fn_deps_detector() {
 	elif [ "${deptocheck}" == "steamcmd" ] && [ -z "${appid}" ]; then
 		array_deps_required=("${array_deps_required[@]/steamcmd/}")
 		steamcmdstatus=1
-	elif [ "${deptocheck}" == "steamcmd" ] && [ "${distroid}" == "debian" ] && ! grep -qE "^deb .*non-free" /etc/apt/sources.list; then
+	elif [ "${deptocheck}" == "steamcmd" ] && [ "${distroid}" == "debian" ] && ! grep -qE '[^deb]+non-free([^-]|$)' /etc/apt/sources.list; then
 		array_deps_required=("${array_deps_required[@]/steamcmd/}")
 		steamcmdstatus=1
 	# Java: Added for users using Oracle JRE to bypass check.
@@ -349,8 +349,8 @@ fi
 # Will warn user if their distro is no longer supported by the vendor.
 if [ -n "${distrosupport}" ]; then
 	if [ "${distrosupport}" == "unsupported" ]; then
-		fn_print_warning_nl "${distroname} is no longer supported by the vendor. Upgrading is recommended."
-		fn_script_log_warn "${distroname} is no longer supported by the vendor. Upgrading is recommended."
+		fn_print_warning_nl "${distroname} is no longer supported by the vendor or LinuxGSM. Upgrading is recommended."
+		fn_script_log_warn "${distroname} is no longer supported by the vendor or LinuxGSM. Upgrading is recommended."
 	fi
 fi
 

@@ -19,7 +19,6 @@ bs
 bt,libicu,dos2unix,libxml2
 btl
 cc
-cd
 ck,xorg-x11-server-Xvfb
 cmw
 cod,compat-libstdc++-33.i686
@@ -86,9 +85,11 @@ pmc,java-11-openjdk
 ps,GConf2
 pvkii
 pvr,libcxx
+pw
 pz,java-11-openjdk rng-tools
 q2
 q3
+q4
 ql
 qw
 ricochet
